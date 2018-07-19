@@ -1,0 +1,146 @@
+<div class="col-md-12">
+<!-- User Info-->
+<div class="csuser_info">
+<div class="cs_druserprofile">
+<figure>
+<a class="info-thumb" href="http://malegaonbazar.com/author/malegaonbazaar/?&amp;action=detail&amp;uid=78">
+<img height="60" width="60" src="http://0" alt="">
+</a>
+</figure>
+<div class="cs_info">
+<h6>
+<a href="http://malegaonbazar.com/author/malegaonbazaar/?&amp;action=detail&amp;uid=78">
+Nawaz Sayyed                                        </a>
+</h6>
+<span>
+Administrator                                    </span>
+</div>
+</div>
+<ul>
+<li><i class="icon-mobile-phone"></i><span>Mobile: 9226485093</span></li>
+</ul>
+<div class="social-media">
+<ul>
+
+</ul> 
+</div> 
+</div>
+<div class="cs-sidebar-map"> 
+<div class="col-md-12  " style="animation-duration:1s;"><div class="clear"></div><div class="cs-map-section" style=";"><div class="cs-map"><ul class="cs-map-tabs"><li class="cs-active"><span onclick="javascript:cs_toggle_street_view('mapview');"><i class="icon-location6"></i> Map View</span></li><li><span onclick="javascript:cs_toggle_street_view('streetview');"><i class="icon-user9"></i> Street View</span></li><li><span onclick="javascript:cs_toggle_street_view('directionview');"><i class="icon-shuffle3"></i> Directions</span></li></ul><div class="cs-map-content"><div class="mapcode iframe mapsection gmapwrapp" id="map_canvasEFDsAkZlG8" style="height: 300px; position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-err-container"><div class="gm-err-content"><div class="gm-err-icon"><img src="https://maps.gstatic.com/mapfiles/api-3/images/icon_error.png" draggable="false" style="user-select: none;"></div><div class="gm-err-title">Oops! Something went wrong.</div><div class="gm-err-message">This page didn't load Google Maps correctly. See the JavaScript console for technical details.</div></div></div></div></div><div class="cs-dir-srch-box" id="cs-dir-srch-box" style="display: none;">
+<input type="text" placeholder="Enter Location" id="cs_end_direction">
+<i class="icon-arrow-down8"></i>
+<ul id="cs_direction_mode" class="cs_direction_mode" style="display: none;">
+<li class="cs-active" data-value="DRIVING">Driving</li>
+<li data-value="WALKING">Walking</li>
+<li data-value="BICYCLING">Bicycling</li>
+<li data-value="TRANSIT">Transit</li>
+</ul>
+<input type="hidden" id="cs_chng_dir_mode" value="DRIVING">
+<label class="search-button">
+<input type="button" id="cs_search_direction" class="cs_search_direction" value="Get Directions">
+</label>
+</div><div id="cs-directions-panel"><div class="gm-err-container"><div class="gm-err-content"><div class="gm-err-icon"><img src="https://maps.gstatic.com/mapfiles/api-3/images/icon_error.png" draggable="false" style="user-select: none;"></div><div class="gm-err-title">Oops! Something went wrong.</div><div class="gm-err-message">This page didn't load Google Maps correctly. See the JavaScript console for technical details.</div></div></div></div></div></div><script type="text/javascript">
+jQuery(window).load(function(){
+setTimeout(function(){
+jQuery('.cs-map-EFDsAkZlG8').animate({
+'height':'300'
+},400)
+},400)
+})
+
+var panorama;
+
+function initialize() {
+var myLatlng = new google.maps.LatLng(20.5528379, 74.53076520000002);
+var mapOptions = {
+zoom: 17,
+scrollwheel: true,
+draggable: true,
+streetViewControl: false,
+center: myLatlng,
+mapTypeId: google.maps.MapTypeId.ROADMAP,
+disableDefaultUI: false,
+};var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+directionsDisplay = new google.maps.DirectionsRenderer();var map = new google.maps.Map(document.getElementById('map_canvasEFDsAkZlG8'), mapOptions);directionsDisplay.setMap(map);
+directionsDisplay.setPanel(document.getElementById('cs-directions-panel'));
+
+function cs_calc_route() {
+var myLatlng = new google.maps.LatLng(20.5528379, 74.53076520000002);
+var end = myLatlng;
+var start = document.getElementById('cs_end_direction').value;
+var mode = document.getElementById('cs_chng_dir_mode').value;
+var request = {
+origin:start,
+destination:end,
+travelMode: google.maps.TravelMode[mode]
+};
+directionsService.route(request, function(response, status) {
+if (status == google.maps.DirectionsStatus.OK) {
+directionsDisplay.setDirections(response);
+}
+});
+}
+
+document.getElementById('cs_search_direction').addEventListener('click', function() {
+cs_calc_route();
+});var infowindow = new google.maps.InfoWindow({
+content: 'Bharat Juna Furniture Bazaar, Behind Old Bus Stand, Malegoan',
+maxWidth: 200,
+maxHeight: 70,
+
+});
+var marker = new google.maps.Marker({
+position: myLatlng,
+map: map,
+title: '',
+icon: 'http://malegaonbazar.com/wp-content/plugins/wp-directory/assets/images/default-marker.png',
+shadow: ''
+});
+
+
+if (infowindow.content != ''){
+infowindow.open(map, marker);
+map.panBy(1,-60);
+google.maps.event.addListener(marker, 'click', function(event) {
+infowindow.open(map, marker);
+});
+}
+
+panorama = map.getStreetView();
+panorama.setPosition(myLatlng);
+panorama.setPov(({
+heading: 265,
+pitch: 0
+}));
+
+}
+
+function cs_toggle_street_view(btn) {
+var toggle = panorama.getVisible();
+if (toggle == false) {
+if(btn == 'streetview'){
+panorama.setVisible(true);
+document.getElementById('cs-dir-srch-box').style.display = 'none';
+} else if(btn == 'directionview') {
+document.getElementById('cs-dir-srch-box').style.display = 'block';
+} else {
+document.getElementById('cs-dir-srch-box').style.display = 'none';
+}
+} else {
+if(btn == 'mapview'){
+panorama.setVisible(false);
+document.getElementById('cs-dir-srch-box').style.display = 'none';
+} else if(btn == 'directionview') {
+panorama.setVisible(false);
+document.getElementById('cs-dir-srch-box').style.display = 'block';
+} else {
+document.getElementById('cs-dir-srch-box').style.display = 'none';
+}
+}
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script></div></div>                            </div>
+
+</div>
